@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import redirect
 
 
-def login_redirect(request):
-    return HttpResponse('<h1>Login redirect</h1>')
+def redirect_login(request):
+    return redirect('login_url', permanent=True)

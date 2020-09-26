@@ -1,6 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Base Title{% endblock title %}</title>
@@ -9,11 +9,31 @@
         type="image/png">
     {% block extra_head %}{% endblock extra_head %}
 </head>
-
 <body>
-    {% block content %}
-    <p>Base.html Content</p>
-    {% endblock %}
+        <header id="wrap">
+            <div class="logo">
+                <h1>
+                    <a href="#">Cars</a> |
+                    <a href="#">To book a car</a>
+                </h1>
+            </div>
+            <div class="account">
+                {% if user.is_authenticated %}
+                <a href="#">{{request.user.username}}</a> |
+                <a href="{% url 'logout_url' %}">Log Out</a>
+                {% else %}
+                <a href="{% url 'login_url' %}">Login</a> |
+                <a href="{% url 'registration_url'%}">Register</a>
+                {% endif %}
+            </div>
+        </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
 </body>
 
 </html>

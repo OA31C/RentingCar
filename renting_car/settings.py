@@ -80,6 +80,8 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_USER_MODEL = 'auth_user.User'
+AUTHENTICATION_BACKENDS = ['apps.auth_user.backends.EmailBackend']
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -116,3 +118,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+"""Connect to email, so you can send emails"""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'django.renting.car@gmail.com'
+EMAIL_HOST_PASSWORD = 'rentig_car_admin_2000'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

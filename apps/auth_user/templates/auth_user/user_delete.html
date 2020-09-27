@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}User Delete{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'auth_user/css/user_delete.css'%}">
+{% endblock extra_head %}
+
+{% block content %}
+<form action="{% url 'user_delete_url' pk=user.id %}" method="POST">
+    {% csrf_token %}
+    <div>Are you sure want to delete <b>{{ user.username }}</b>?</div>
+    <button type="submit" id="delete_button">Delete</button>
+    <a href="{% url 'user_profile_url' pk=user.id %}">Cancel</a>
+</form>
+{% endblock %}

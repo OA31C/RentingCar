@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Car Profile{% endblock title %}
+
+{% block content %}
+<div><b>Model:</b> {{car_object.name_en}}</div>
+<div><b>Owner:</b>
+        <a href="{% url 'user_profile_url' pk=car_object.owner_car.id %}">
+            {{car_object.owner_car.username}}
+        </a>
+    </div>
+    <h3>First registration date: {{car_object.first_registration_date}}</h3>
+{% endblock %}

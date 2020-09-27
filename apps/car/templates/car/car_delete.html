@@ -1,0 +1,6 @@
+<form action="{% url 'car_delete_url' pk=car.id %}" method="POST">
+    {% csrf_token %}
+    <h3>Are you sure want to delete <b>{{ car.english_name }}</b></h3>
+    <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">Cancel</a>
+    <button type="submit" name="delete_button">Delete</button>
+</form>

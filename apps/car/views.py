@@ -49,7 +49,10 @@ class CarEdit(LoginRequiredMixin, UpdateView):
     model = Car
     fields = ['name_en', 'name_ru', 'first_registration_date']
     template_name = 'car/car_edit.html'
-    success_url = 'car_all'
+
+    def get_success_url(self):
+        car_object = self.object
+        return reverse('car_profile_url', kwargs={'pk': car_object.pk})
 
 
 class CarDelete(LoginRequiredMixin, View):

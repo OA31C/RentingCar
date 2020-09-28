@@ -4,18 +4,18 @@
 
 {% block content %}
 {% for car in cars%}
-    <div>
-        <b>model:</b>
-        <a href="{% url 'car_profile_url' pk=car.id %}">
-            {{car.name_en}}
-        </a>
-    </div>
+<div>
+    <b>model:</b>
+    <a href="{% url 'car_profile_url' pk=car.id %}">
+        {{car.name_en}}
+    </a>
+</div>
 
-    <div>
-        <b>owner:</b>
-        <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">
-            {{car.owner_car.username}}
-        <a/>
-    </div>
+<div>
+    <b>owner:</b>
+    <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">
+        {{car.owner_car.username}}
+        <a />
+</div>
 {% endfor %}
 {% endblock %}

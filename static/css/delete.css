@@ -1,0 +1,9 @@
+form {
+    margin: auto;
+}
+
+#delete_button {
+    background: tomato;
+    width: 60px;
+    height: 35px;
+}

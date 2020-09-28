@@ -1,33 +1,37 @@
-* {
-    margin: 0;
+*{
+    margin:0;
     padding: 0;
-}
-
-body {
-    background: #01a3a4;
-}
-
-a {
     text-decoration: none;
-    color: #fff;
+    overflow-x: hidden;
 }
 
-a:hover {
-    color: #FF6600;
-}
-
-#wrap {
+#page {
     width: 100%;
-    background: #4CAF50;
-    height: 70px;
 }
 
-.logo {
-    float: left;
-    padding: 15px;
+#header {
+    height: 70px;
+    width: 100%;
+    background-color:#b5dcb3;
+}
+
+#content {
+    background-color:#eeeeee;
+    width:100%;
+    float:left;
+    padding:5px;
+    margin: auto;
+}
+
+#footer {
+    background-color:#b5dcb3;
+    clear:both;
+    text-align:center;
+    padding:5px;
 }
 
 .account {
     float: right;
     padding: 25px;
+
 }

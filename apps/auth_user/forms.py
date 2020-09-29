@@ -8,6 +8,11 @@ class RegisterForm(UserCreationForm):
         model = get_user_model()
         fields = ('email', 'username', 'password1', 'password2')
 
+    def __init__(self, *args, **kwargs):
+        super(RegisterForm, self).__init__(*args, **kwargs)
+        for field_name in ('email', 'username', 'password1', 'password2'):
+            self.fields[field_name].help_text = ''
+
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Email')

@@ -1,0 +1,37 @@
+#mainContent {
+    display: grid;
+
+    grid-template-areas:
+    "nav content";
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 20% 80%;
+    grid-gap: 10px;
+}
+
+#mainNav, #other_content {
+    background: gold;
+    border-radius: 5px;
+}
+
+#mainNav {
+    grid-area: nav;
+    background-color: #555;
+}
+
+#mainNav > div {
+  padding: 10px;
+}
+
+#mainNav > div:hover {
+    background:red;
+}
+#mainNav > div > a {
+    color: white;
+}
+
+
+#other_content {
+    grid-area: content;
+    display: block;
+}

@@ -7,7 +7,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', redirect_login),
     path('registration/', RegistrationUser.as_view(), name='registration_url'),
-    path('login/', LoginUser.as_view(), name='login_url'),
+    path('login/', LoginUser.as_view(redirect_authenticated_user=True), name='login_url'),
     path('logout/', LogOutUser.as_view(), name='logout_url'),
 
     path('user/profile/<int:pk>/', UserProfile.as_view(), name='user_profile_url'),

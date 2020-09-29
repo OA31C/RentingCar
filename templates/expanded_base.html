@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div id="mainNav">
+    <div><a href="{% url 'user_profile_url' pk=request.user.id %}">My profile</a></div>
+    <div><a href="{% url 'car_renting_add_url' %}">Renting Car</a></div>
+    <div><a href="{% url 'car_create_url' %}">Create Car</a></div>
+</div>
+<div id="other_content">{% block other_content %}{% endblock %}</div>
+{% endblock %}

@@ -1,21 +1,18 @@
-{% extends "base.html" %}
+{% extends 'expanded_base.html' %}
 
-{% block title %}All Cars{% endblock title %}
+{% load static %}
 
-{% block content %}
+{% block title %}Car All{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
+{% endblock extra_head %}
+
+
+{% block other_content %}
 {% for car in cars%}
-<div>
-    <b>model:</b>
-    <a href="{% url 'car_profile_url' pk=car.id %}">
-        {{car.name_en}}
-    </a>
-</div>
-
-<div>
-    <b>owner:</b>
-    <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">
-        {{car.owner_car.username}}
-        <a />
-</div>
+<p>{{car.name_en}} - {{car.owner_car.username}} - {{car}}</p>
 {% endfor %}
 {% endblock %}
+
+

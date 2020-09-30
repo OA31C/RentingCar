@@ -1,5 +1,5 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from renting_car.settings import EMAIL_HOST_USER
 from apps.car.models import Car, RentingCar
 from django.core.mail import send_mail
@@ -7,6 +7,7 @@ from django.views.generic import View
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib import messages
 
 
 # Create your views here.
@@ -20,8 +21,10 @@ class CarCreate(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.owner_car = self.request.user
         self.object.save()
+        messages.add_message(self.request, messages.SUCCESS, 'Car is create success!')
         message = f"Car is create - {self.object.name_en}"
-        send_mail('Renting Car Django', message, EMAIL_HOST_USER, [self.request.user.email])
+        send_mail('Renting Car Django', message,
+                  EMAIL_HOST_USER, [self.request.user.email])
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -53,6 +56,12 @@ class CarEdit(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         car_object = self.object
         return reverse('car_profile_url', kwargs={'pk': car_object.pk})
+
+
+class CarRentedUser(View):
+    def get(self, request):
+        my_renting_cars = request.user.renting_cars.all()
+        return render(request, 'car/car_rented_user.html', context={'cars': my_renting_cars})
 
 
 class CarDelete(LoginRequiredMixin, View):
@@ -88,7 +97,9 @@ class CarRentingAdd(LoginRequiredMixin, CreateView):
         self.object.save()
         message = f"Book car {self.object.car.name_en} is create." \
                   f"Forget date {self.object.lease_start_date} - {self.object.lease_end_date}"
-        send_mail('Renting Car Django', message, EMAIL_HOST_USER, [self.request.user.email])
+        send_mail('Renting Car Django', message,
+                  EMAIL_HOST_USER, [self.request.user.email])
+        messages.add_message(self.request, messages.SUCCESS, 'Renting car added is success!')
         return super().form_valid(form)
 
     def get_success_url(self):

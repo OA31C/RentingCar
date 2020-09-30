@@ -1,10 +1,26 @@
-{% extends 'base.html' %}
+{% extends 'expanded_base.html' %}
 
+{% load static %}
 
-{% block content %}
-<form action="{% url 'car_renting_add_url' %}" method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Create</button>
-</form>
+{% block title %}Renting car{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
+{% endblock extra_head %}
+
+{% block other_content %}
+<div class="login-pae">
+    <div class="form">
+        <form action="{% url 'car_renting_add_url' %}" method="POST">
+            <h3>Renting Car</h3>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Create</button>
+            <a href="{% url 'user_profile_url' pk=request.user.id %}">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>
 {% endblock %}

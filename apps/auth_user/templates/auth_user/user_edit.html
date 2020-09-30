@@ -5,20 +5,30 @@
 {% block title %}User Edit{% endblock title %}
 
 {% block extra_head %}
-<link rel="stylesheet" type="text/css" href="{% static 'user/css/user_edit.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
 {% endblock extra_head %}
 
 
 {% block content %}
 <div class="login-page">
-  <div class="form">
-    <form action="{% url 'user_edit_url'  pk=user.id %}" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <br />
-      <button type="submit" id="submit">Save</button>
-      <a href="{% url 'user_profile_url' pk=user.id %}">Cancel</a>
-    </form>
-  </div>
+    <div class="form">
+        <form action="{% url 'user_edit_url'  pk=user.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br/>
+            <button type="submit" id="submit">Save</button>
+            <br>
+            <br>
+            <a href="{% url 'user_profile_url' pk=user.id %}">Cancel</a>
+        </form>
+    </div>
 </div>
 {% endblock %}
+
+
+
+
+
+
+
+

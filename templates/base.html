@@ -3,41 +3,33 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Base Title{% endblock title %}</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css'%}">
-  <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/transport-19/70/_-2-512.png" type="image/png">
-  {% block extra_head %}{% endblock extra_head %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Base Title{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css'%}">
+    <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/transport-19/70/_-2-512.png"
+          type="image/png">
+    {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body>
-
-  <div id="page">
-    <div id="header">
-      <div class="account">
+<header id="pageHeader">
+    <div id="auth_account">
         {% if user.is_authenticated %}
-        <a href="#">{{request.user.username}}</a> |
+        <a href="{% url 'user_profile_url' pk=request.user.id %}">
+            <img src="https://cdn2.iconfinder.com/data/icons/leto-blue-ui-generic-1/64/ui_-04-512.png">
+            {{request.user.username}}
+        </a> |
         <a href="{% url 'logout_url' %}">Log Out</a>
         {% else %}
         <a href="{% url 'login_url' %}">Login</a> |
         <a href="{% url 'registration_url'%}">Register</a>
         {% endif %}
-      </div>
     </div>
-
-
-
-    <div id="content">
-      {% block content %}
-
-      {% endblock %}
-    </div>
-
-    <div id="footer">
-      Copyright © 2020 Renting Car
-    </div>
-  </div>
-
+</header>
+<div id="mainContent">
+    {% block content %}
+    {% endblock %}
+</div>
+<footer id="pageFooter">Copyright © 2020 Renting Car</footer>
 </body>
-
 </html>

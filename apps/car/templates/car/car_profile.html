@@ -1,25 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'expanded_base.html' %}
 
 {% load static %}
 
 {% block title %}Car Profile{% endblock title %}
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/profile.css'%}">
 {% endblock extra_head %}
 
-{% block content %}
+
+{% block other_content %}
 <div class="profile-page">
     <div class="content">
-      <div class="login-page">
-      <div><b>Model:</b> {{car_object.name_en}}</div>
-<div><b>Owner:</b>
-        <a href="{% url 'user_profile_url' pk=car_object.owner_car.id %}">
-            {{car_object.owner_car.username}}
-        </a>
-    </div>
-    <h3>First registration date: {{car_object.first_registration_date}}</h3>
-</div>
+        <div><b>Model:</b> {{car_object.name_en}}</div>
+        <div><b>Owner:</b>
+            <a href="{% url 'user_profile_url' pk=car_object.owner_car.id %}">
+                {{car_object.owner_car.username}}
+            </a>
+        </div>
+        <h3>First registration date: {{car_object.first_registration_date}}</h3>
     </div>
 </div>
 {% endblock %}
+
+

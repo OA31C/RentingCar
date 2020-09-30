@@ -6,6 +6,7 @@ from django.urls import reverse, reverse_lazy
 from .forms import LoginForm, RegisterForm
 from django.views.generic import View
 from django.http import HttpResponse
+from django.contrib import messages
 from .models import User
 
 
@@ -20,9 +21,11 @@ class LoginUser(LoginView):
     template_name = 'auth_user/login.html'
 
     """Override method to go to the login"""
+
     def get_success_url(self):
         auth_user = self.request.user
-        return reverse('user_profile_url',  kwargs={'pk': auth_user.pk})
+        messages.add_message(self.request, messages.SUCCESS, 'Welcome to site! ' + auth_user.username)
+        return reverse('user_profile_url', kwargs={'pk': auth_user.pk})
 
 
 class LogOutUser(LogoutView):
@@ -44,8 +47,10 @@ class UserEdit(LoginRequiredMixin, UpdateView):
     template_name = 'auth_user/user_edit.html'
 
     """Override method to go to the user profile"""
+
     def get_success_url(self):
         object_user = self.request.user
+        messages.add_message(self.request, messages.SUCCESS, 'User is success edit!')
         return reverse('user_profile_url', kwargs={'pk': object_user.pk})
 
     def get_form_kwargs(self):

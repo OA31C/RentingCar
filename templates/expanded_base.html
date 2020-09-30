@@ -5,8 +5,18 @@
 {% block content %}
 <div id="mainNav">
     <div><a href="{% url 'user_profile_url' pk=request.user.id %}">My profile</a></div>
-    <div><a href="{% url 'car_renting_add_url' %}">Renting Car</a></div>
-    <div><a href="{% url 'car_create_url' %}">Create Car</a></div>
+    <div><a href="{% url 'car_create_url' %}">Create car</a></div>
+    <div><a href="{% url 'car_renting_add_url' %}">Renting car</a></div>
+    <div><a href="{% url 'car_rented_user_url' %}">My renting car</a></div>
+
 </div>
-<div id="other_content">{% block other_content %}{% endblock %}</div>
+<div id="other_content">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="{% if message.tags %}alert-success{% endif %}" role="alert">{{message}}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% block other_content %}{% endblock %}
+</div>
 {% endblock %}

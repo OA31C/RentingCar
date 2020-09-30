@@ -4,7 +4,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -15,7 +14,6 @@ SECRET_KEY = 'ya)va-)!u*$b!q@fy)97dfplcn69387d-oppwmh32swiz_huxr'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -64,7 +62,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'renting_car.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -75,13 +72,11 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_USER_MODEL = 'auth_user.User'
 AUTHENTICATION_BACKENDS = ['apps.auth_user.backends.EmailBackend']
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -97,7 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

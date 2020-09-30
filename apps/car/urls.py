@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import CarCreate, CarProfile, CarAll, CarEdit, CarDelete, CarRenting, CarRentingAdd
+from .views import (
+    CarCreate, CarProfile, CarAll, CarEdit, CarDelete, CarRenting, CarRentingAdd, CarRentedUser,
+)
 
 urlpatterns = [
     path('create/', CarCreate.as_view(), name='car_create_url'),
@@ -7,6 +9,8 @@ urlpatterns = [
     path('all/', CarAll.as_view(), name='car_all_url'),
     path('edit/<int:pk>/', CarEdit.as_view(), name='car_edit_url'),
     path('delete/<int:pk>/', CarDelete.as_view(), name='car_delete_url'),
+
+    path('rented_user/', CarRentedUser.as_view(), name='car_rented_user_url'),
 
     path('renting/', CarRenting.as_view(), name='car_renting_url'),
     path('renting_add/', CarRentingAdd.as_view(), name='car_renting_add_url'),

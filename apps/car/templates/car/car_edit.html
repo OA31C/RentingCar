@@ -1,25 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'expanded_base.html' %}
 
 {% load static %}
 
 {% block title %}Car Edit{% endblock title %}
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
 {% endblock extra_head %}
 
-{% block content %}
+
+{% block other_content %}
 <div class="login-page">
-  <div class="form">
-      <form action="{% url 'car_edit_url' pk=car.id %}" method="POST">
-    {% csrf_token %}
+    <div class="form">
+        <form action="{% url 'car_edit_url' pk=car.id %}" method="POST">
+            {% csrf_token %}
 
-    {{form}}
+            {{form}}
 
-    <button type="submit">Edit Car</button>
-</form>
-  </div>
+            <button type="submit">Edit Car</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
+
 

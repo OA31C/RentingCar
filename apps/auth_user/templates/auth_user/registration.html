@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block title %}Registration{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
+{% endblock extra_head %}
 
 {% block content %}
-<h1>Register</h1>
-
-<form action="{% url 'registration_url' %}" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" id="submit">Register</button>
-</form>
+<div class="login-page">
+    <div class="form">
+        <form action="{% url 'registration_url' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="submit">Register</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
+
+

@@ -1,37 +1,59 @@
-*{
-    margin:0;
-    padding: 0;
+body {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "content content content"
+    "footer footer footer";
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-columns: 20% 1fr 15%;
+  grid-gap: 10px;
+  height: 100vh;
+  margin: 0;
+
+}
+
+a {
     text-decoration: none;
-    overflow-x: hidden;
 }
 
-#page {
-    width: 100%;
+ul {
+    list-style: none;
 }
 
-#header {
-    height: 70px;
-    width: 100%;
-    background-color:#b5dcb3;
+header, footer, #mainContent {
+  padding: 20px;
+}
+#pageHeader {
+  grid-area: header;
+  color: #ffffff;
+  background-color:#b5dcb3;
 }
 
-#content {
-    background-color:#eeeeee;
-    width:100%;
-    float:left;
-    padding:5px;
-    margin: auto;
+#pageHeader > #auth_account {
+    text-align: right;
 }
 
-#footer {
-    background-color:#b5dcb3;
-    clear:both;
-    text-align:center;
-    padding:5px;
+#pageHeader > #auth_account > a > img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
 
-.account {
-    float: right;
-    padding: 25px;
+#pageHeader > #auth_account > a {
+    color: tomato;
+}
 
+#pageHeader > #auth_account > a:hover {
+    color: white;
+}
+
+#pageFooter {
+  grid-area: footer;
+
+  text-align: center;
+  color: #ffffff;
+  background-color:#b5dcb3;
+}
+#mainContent {
+  grid-area: content;
 }

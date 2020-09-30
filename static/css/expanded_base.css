@@ -30,8 +30,15 @@
     color: white;
 }
 
-
 #other_content {
     grid-area: content;
     display: block;
+}
+
+.alert-success {
+    margin: 5px;
+    border-radius: 5px;
+    height: 25px;
+    background-color: #4CAF50;
+
 }

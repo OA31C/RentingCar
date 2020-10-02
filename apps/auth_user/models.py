@@ -1,16 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import ugettext_lazy as _
 
 
 # Create your models here.
 class User(AbstractUser):
-    languages = (
+    LANGUAGES = (
         (1, 'en'),
         (2, 'ru')
     )
-    email = models.EmailField(max_length=60, unique=True)
+
+    email = models.EmailField(
+        verbose_name=_('E-mail'),
+        max_length=60,
+        unique=True)
+
     language = models.IntegerField(
-        verbose_name='language', choices=languages, default='1')
+        verbose_name=_('Language'),
+        choices=LANGUAGES,
+        default='en')
 
     REQUIRED_FIELDS = ['email']
 

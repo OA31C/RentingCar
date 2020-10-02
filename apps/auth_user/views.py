@@ -1,6 +1,7 @@
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.translation import gettext as _
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from .forms import LoginForm, RegisterForm
@@ -24,7 +25,8 @@ class LoginUser(LoginView):
 
     def get_success_url(self):
         auth_user = self.request.user
-        messages.add_message(self.request, messages.SUCCESS, 'Welcome to site! ' + auth_user.username)
+        messages.add_message(
+            self.request, messages.SUCCESS, _('Welcome to site! ') + auth_user.username)
         return reverse('user_profile_url', kwargs={'pk': auth_user.pk})
 
 
@@ -50,7 +52,8 @@ class UserEdit(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         object_user = self.request.user
-        messages.add_message(self.request, messages.SUCCESS, 'User is success edit!')
+        messages.add_message(
+            self.request, messages.SUCCESS, self.request.user.username + _(' is success edit!'))
         return reverse('user_profile_url', kwargs={'pk': object_user.pk})
 
     def get_form_kwargs(self):

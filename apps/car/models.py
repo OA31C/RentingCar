@@ -1,7 +1,7 @@
 from django.db import models
 from apps.auth_user.models import User
 from datetime import datetime
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 
 # Create your models here.

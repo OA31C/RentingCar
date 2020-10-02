@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Login{% endblock title %}
+{% block title %}{% trans "Login" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
@@ -14,16 +16,11 @@
         <form action="{% url 'login_url' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" id="submit">Login</button>
+            <button type="submit" id="submit">{% trans "Login" %}</button>
         </form>
         <p class="change_pass">
-            <a href="{% url 'reset_password' %}">Forgot password?</a>
+            <a href="{% url 'reset_password' %}">{% trans "Forgot password?" %}</a>
         </p>
     </div>
 </div>
 {% endblock %}
-
-
-
-
-

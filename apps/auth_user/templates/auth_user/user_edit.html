@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}User Edit{% endblock title %}
+{% block title %}{% trans "User Edit" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
@@ -16,19 +18,11 @@
             {% csrf_token %}
             {{ form.as_p }}
             <br/>
-            <button type="submit" id="submit">Save</button>
+            <button type="submit" id="submit">{% trans "Save" %}</button>
             <br>
             <br>
-            <a href="{% url 'user_profile_url' pk=user.id %}">Cancel</a>
+            <a href="{% url 'user_profile_url' pk=user.id %}">{% trans "Cancel" %}</a>
         </form>
     </div>
 </div>
 {% endblock %}
-
-
-
-
-
-
-
-

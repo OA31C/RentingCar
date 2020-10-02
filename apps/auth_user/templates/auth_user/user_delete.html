@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}User Delete{% endblock title %}
+{% block title %}{% trans "User Delete" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/delete.css'%}">
@@ -11,8 +13,8 @@
 {% block content %}
 <form action="{% url 'user_delete_url' pk=user.id %}" method="POST">
     {% csrf_token %}
-    <div>Are you sure want to delete <b>{{ user.username }}</b>?</div>
-    <button type="submit" id="delete_button">Delete</button>
-    <a href="{% url 'user_profile_url' pk=user.id %}">Cancel</a>
+    <div>{% trans "Are you sure want to delete" %} <b>{{ user.username }}</b>?</div>
+    <button type="submit" id="delete_button">{% trans "Delete" %}</button>
+    <a href="{% url 'user_profile_url' pk=user.id %}">{% trans "Cancel" %}</a>
 </form>
 {% endblock %}

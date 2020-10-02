@@ -1,8 +1,10 @@
 {% extends 'expanded_base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Car Edit{% endblock title %}
+{% block title %}{% trans "Edit Car" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
@@ -18,11 +20,10 @@
 
             {{form}}
 
-            <button type="submit">Edit Car</button>
+            <button type="submit">{% trans "Save" %}</button>
+            <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">{% trans "Cancel" %}</a>
         </form>
     </div>
 </div>
 
 {% endblock %}
-
-

@@ -1,27 +1,26 @@
 {% extends 'expanded_base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Car Profile{% endblock title %}
+{% block title %}{% trans "Car" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
 <link rel="stylesheet" type="text/css" href="{% static '/css/profile.css'%}">
 {% endblock extra_head %}
 
-
 {% block other_content %}
 <div class="profile-page">
     <div class="content">
-        <div><b>Model:</b> {{car_object.name_en}}</div>
-        <div><b>Owner:</b>
+        <div><b>{% trans "Model:" %}</b> {{car_object.name_en}}</div>
+        <div><b>{% trans "Owner:" %}</b>
             <a href="{% url 'user_profile_url' pk=car_object.owner_car.id %}">
                 {{car_object.owner_car.username}}
             </a>
         </div>
-        <h3>First registration date: {{car_object.first_registration_date}}</h3>
+        <h3>{% trans "First registration date:" %} {{car_object.first_registration_date}}</h3>
     </div>
 </div>
 {% endblock %}
-
-

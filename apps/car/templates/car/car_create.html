@@ -1,8 +1,10 @@
 {% extends 'expanded_base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Car Create{% endblock title %}
+{% block title %}{% trans "Create Car" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
@@ -13,17 +15,15 @@
 <div class="login-page">
     <div class="form">
         <form action="{% url 'car_create_url' %}" method="POST">
-            <h3>Create Car</h3>
+            <h3>{% trans "Create Car" %}</h3>
             {% csrf_token %}
 
             {{form.as_p}}
-            <button type="submit" name="create_button">Create Car</button>
+            <button type="submit" name="create_button">{% trans "Create Car" %}</button>
             <a href="{% url 'user_profile_url' pk=request.user.id %}">
-                Cancel
+                {% trans "Cancel" %}
             </a>
         </form>
     </div>
 </div>
 {% endblock %}
-
-

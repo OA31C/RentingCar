@@ -1,8 +1,10 @@
 {% extends 'expanded_base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Car Profile{% endblock title %}
+{% block title %}{% trans "Rented cars by the user" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">

@@ -1,6 +1,20 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% load static %}
+
+{% block title %}{% trans "Car Delete" %}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/delete.css'%}">
+{% endblock extra_head %}
+
+{% block content %}
 <form action="{% url 'car_delete_url' pk=car.id %}" method="POST">
     {% csrf_token %}
-    <h3>Are you sure want to delete <b>{{ car.english_name }}</b></h3>
-    <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">Cancel</a>
-    <button type="submit" name="delete_button">Delete</button>
+    <h3>{% trans "Are you sure want to delete" %} <b>{{ car.english_name }}</b></h3>
+    <a href="{% url 'user_profile_url' pk=car.owner_car.id %}">{% trans "Cancel" %}</a>
+    <button type="submit" name="delete_button">{% trans "Delete" %}</button>
 </form>
+{% endblock %}

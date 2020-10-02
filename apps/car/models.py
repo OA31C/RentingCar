@@ -1,14 +1,15 @@
 from django.db import models
 from apps.auth_user.models import User
 from datetime import datetime
+from django.utils.translation import ugettext as _
 
 
 # Create your models here.
 class Car(models.Model):
-    name_en = models.CharField(max_length=30)
-    name_ru = models.CharField(max_length=30)
+    name_en = models.CharField(verbose_name=_("Name EN"), max_length=30)
+    name_ru = models.CharField(verbose_name=_("Name RU"), max_length=30)
     owner_car = models.ForeignKey(User, on_delete=models.CASCADE)
-    first_registration_date = models.DateField()
+    first_registration_date = models.DateField(verbose_name=_("First registration date"))
     created_date = models.DateTimeField(auto_now_add=True)
 
     def save(self):
@@ -33,9 +34,9 @@ class Car(models.Model):
 class RentingCar(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='renting_cars')
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    lease_start_date = models.DateField()
-    lease_end_date = models.DateField()
+    car = models.ForeignKey(Car, verbose_name=_("Car"), on_delete=models.CASCADE)
+    lease_start_date = models.DateField(verbose_name=_("Lease start date"))
+    lease_end_date = models.DateField(verbose_name=_("Lease end date"))
 
     def save(self):
         if self.clean():

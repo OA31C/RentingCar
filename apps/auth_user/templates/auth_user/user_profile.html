@@ -1,8 +1,10 @@
 {% extends 'expanded_base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}User Profile{% endblock title %}
+{% block title %}{% trans "User Profile" %}{% endblock title %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static '/css/expanded_base.css'%}">
@@ -14,7 +16,7 @@
 <div class="profile-page">
     <div class="content">
         <div class="img_edit_user">
-            <h1>User Profile</h1>
+            <h1>{% trans "User Profile" %}</h1>
 
             <a href="{% url 'user_edit_url' pk=user.id %}">
                 <img src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_pencil-512.png">
@@ -23,13 +25,13 @@
                 <img src=" https://cdn4.iconfinder.com/data/icons/gradient-ui-1/512/error-512.png">
             </a>
         </div>
-        <h3>id: {{user.id}}</h3>
-        <h3>username: {{user.username}}</h3>
-        <h3>email: {{user.email}}</h3>
+        <h3>{% trans "id:" %} {{user.id}}</h3>
+        <h3>{% trans "username:" %} {{user.username}}</h3>
+        <h3>{% trans "email:" %} {{user.email}}</h3>
         {% if user.language == 1 %}
-        <h3>language: en</h3>
+        <h3>{% trans "language: en" %}</h3>
         {% else %}
-        <h3>language: ru</h3>
+        <h3>{% trans "language: ru" %}</h3>
         {% endif %}
     </div>
 </div>

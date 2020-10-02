@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-02 22:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/car/models.py:9
+msgid "Name EN"
+msgstr ""
+
+#: apps/car/models.py:10
+msgid "Name RU"
+msgstr ""
+
+#: apps/car/models.py:12
+msgid "First registration date"
+msgstr ""
+
+#: apps/car/models.py:37 apps/car/templates/car/car_profile.html:7
+msgid "Car"
+msgstr ""
+
+#: apps/car/models.py:38
+msgid "Lease start date"
+msgstr ""
+
+#: apps/car/models.py:39
+msgid "Lease end date"
+msgstr ""
+
+#: apps/car/templates/car/car_all.html:7
+msgid "Car All"
+msgstr ""
+
+#: apps/car/templates/car/car_create.html:7
+#: apps/car/templates/car/car_create.html:18
+#: apps/car/templates/car/car_create.html:22
+msgid "Create Car"
+msgstr ""
+
+#: apps/car/templates/car/car_create.html:24
+#: apps/car/templates/car/car_delete.html:17
+#: apps/car/templates/car/car_edit.html:24
+#: apps/car/templates/car_renting/car_renting_add.html:23
+msgid "Cancel"
+msgstr ""
+
+#: apps/car/templates/car/car_delete.html:7
+msgid "Car Delete"
+msgstr ""
+
+#: apps/car/templates/car/car_delete.html:16
+msgid "Are you sure want to delete"
+msgstr ""
+
+#: apps/car/templates/car/car_delete.html:18
+msgid "Delete"
+msgstr ""
+
+#: apps/car/templates/car/car_edit.html:7
+msgid "Edit Car"
+msgstr ""
+
+#: apps/car/templates/car/car_edit.html:23
+msgid "Save"
+msgstr ""
+
+#: apps/car/templates/car/car_profile.html:17
+msgid "Model:"
+msgstr ""
+
+#: apps/car/templates/car/car_profile.html:18
+msgid "Owner:"
+msgstr ""
+
+#: apps/car/templates/car/car_profile.html:23
+msgid "First registration date:"
+msgstr ""
+
+#: apps/car/templates/car/car_rented_user.html:7
+msgid "Rented cars by the user"
+msgstr ""
+
+#: apps/car/templates/car_renting/car_renting_add.html:7
+msgid "Renting car"
+msgstr ""
+
+#: apps/car/templates/car_renting/car_renting_add.html:18
+msgid "Renting Car"
+msgstr ""
+
+#: apps/car/templates/car_renting/car_renting_add.html:21
+msgid "Rent"
+msgstr ""
+
+#: apps/car/views.py:25
+msgid "Car is create success!"
+msgstr ""
+
+#: apps/car/views.py:103
+msgid "Renting car added is success!"
+msgstr ""

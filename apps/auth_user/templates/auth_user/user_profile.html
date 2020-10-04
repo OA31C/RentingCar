@@ -28,10 +28,11 @@
         <h3>{% trans "id:" %} {{user.id}}</h3>
         <h3>{% trans "username:" %} {{user.username}}</h3>
         <h3>{% trans "email:" %} {{user.email}}</h3>
-        {% if user.language == 1 %}
-        <h3>{% trans "language: en" %}</h3>
-        {% else %}
-        <h3>{% trans "language: ru" %}</h3>
+
+        {% if user.language == 'en' %}
+        <h3>{% trans "language: English" %}</h3>
+        {% elif user.language == 'ru' %}
+        <h3>{% trans "language: Russia" %}</h3>
         {% endif %}
     </div>
 </div>

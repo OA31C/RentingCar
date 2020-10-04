@@ -9,6 +9,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import User
+from django.utils import translation
 
 
 class RegistrationUser(CreateView):
@@ -25,6 +26,12 @@ class LoginUser(LoginView):
 
     def get_success_url(self):
         auth_user = self.request.user
+
+        language = auth_user.language
+        if language == 'en':
+            translation.activate(language)
+        elif language == 'ru':
+            translation.activate(language)
         messages.add_message(
             self.request, messages.SUCCESS, _('Welcome to site! ') + auth_user.username)
         return reverse('user_profile_url', kwargs={'pk': auth_user.pk})
@@ -62,6 +69,16 @@ class UserEdit(LoginRequiredMixin, UpdateView):
         if self.request.user.email != kwargs['instance'].email:
             return self.handle_no_permission()
         return kwargs
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        language = request.POST['language']
+        if language == 'en':
+            translation.activate(language)
+        elif language == 'ru':
+            translation.activate(language)
+        return super().post(request, *args, **kwargs)
 
 
 class UserDelete(LoginRequiredMixin, View):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 22:21+0000\n"
+"POT-Creation-Date: 2020-10-04 21:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 msgid "Email"
 msgstr "Эл. адрес:"
 
-#: apps/auth_user/models.py:14
+#: apps/auth_user/models.py:15
 msgid "E-mail"
 msgstr "Эл. адрес:"
 
-#: apps/auth_user/models.py:19
+#: apps/auth_user/models.py:21
 msgid "Language"
 msgstr "Язык"
 
@@ -175,18 +175,18 @@ msgstr "Имя пользователя:"
 msgid "email:"
 msgstr "Эл. адрес:"
 
-#: apps/auth_user/templates/auth_user/user_profile.html:32
-msgid "language: en"
-msgstr "Язык: en"
+#: apps/auth_user/templates/auth_user/user_profile.html:33
+msgid "language: English"
+msgstr "язык: английский"
 
-#: apps/auth_user/templates/auth_user/user_profile.html:34
-msgid "language: ru"
-msgstr "Язык: ru"
+#: apps/auth_user/templates/auth_user/user_profile.html:35
+msgid "language: Russia"
+msgstr "язык: русский"
 
-#: apps/auth_user/views.py:29
+#: apps/auth_user/views.py:36
 msgid "Welcome to site! "
 msgstr "Добро пожаловать на сайт! "
 
-#: apps/auth_user/views.py:56
+#: apps/auth_user/views.py:63
 msgid " is success edit!"
 msgstr " удачно изменен!"

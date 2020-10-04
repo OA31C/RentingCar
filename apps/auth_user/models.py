@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
+from renting_car.settings import LANGUAGE_CODE
 
 
 # Create your models here.
 class User(AbstractUser):
     LANGUAGES = (
-        (1, 'en'),
-        (2, 'ru')
+        ('en', 'English'),
+        ('ru', 'Russia')
     )
 
     email = models.EmailField(
@@ -15,10 +16,11 @@ class User(AbstractUser):
         max_length=60,
         unique=True)
 
-    language = models.IntegerField(
+    language = models.CharField(
+        max_length=5,
         verbose_name=_('Language'),
         choices=LANGUAGES,
-        default='en')
+        default=LANGUAGE_CODE)
 
     REQUIRED_FIELDS = ['email']
 

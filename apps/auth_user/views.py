@@ -2,6 +2,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext as _
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from .forms import LoginForm, RegisterForm
@@ -9,7 +10,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import User
-from django.utils import translation
+from .helpers import sets_language
 
 
 class RegistrationUser(CreateView):
@@ -28,10 +29,7 @@ class LoginUser(LoginView):
         auth_user = self.request.user
 
         language = auth_user.language
-        if language == 'en':
-            translation.activate(language)
-        elif language == 'ru':
-            translation.activate(language)
+        sets_language(language)
         messages.add_message(
             self.request, messages.SUCCESS, _('Welcome to site! ') + auth_user.username)
         return reverse('user_profile_url', kwargs={'pk': auth_user.pk})
@@ -72,12 +70,8 @@ class UserEdit(LoginRequiredMixin, UpdateView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-
         language = request.POST['language']
-        if language == 'en':
-            translation.activate(language)
-        elif language == 'ru':
-            translation.activate(language)
+        sets_language(language)
         return super().post(request, *args, **kwargs)
 
 
@@ -85,7 +79,7 @@ class UserDelete(LoginRequiredMixin, View):
     login_url = 'login_url'
 
     def get(self, request, pk):
-        user = User.objects.get(id=pk)
+        user = get_object_or_404(User, id=pk)
         return render(request, 'auth_user/user_delete.html', context={'user': user})
 
     def post(self, request, pk):

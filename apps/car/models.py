@@ -14,18 +14,22 @@ class Car(models.Model):
 
     def save(self):
         if self.clean():
-            return super(Car, self).save()
+            super(Car, self).save()
+            return True
 
     def clean(self):
-        return Car.check_first_registration_date(self)
+        if Car.check_first_registration_date(self):
+            print('Коректно введені дані')
+            return True
 
     @staticmethod
-    def check_first_registration_date(car_obj):
+    def check_first_registration_date(entered_data_about_car):
         current_date = datetime.now().date()
-        if current_date < car_obj.first_registration_date:
-            print('The date entered from the form is larger than today')
+        if current_date < entered_data_about_car.first_registration_date:
             return False
         return True
+
+    # Car.check_first_registration_date(car_obj)
 
     def __str__(self):
         return f"{self.id} - {self.name_en}"

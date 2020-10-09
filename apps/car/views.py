@@ -19,13 +19,16 @@ class CarCreate(LoginRequiredMixin, CreateView):
     template_name = 'car/car_create.html'
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.owner_car = self.request.user
-        self.object.save()
-        messages.add_message(self.request, messages.SUCCESS, _('Car is create success!'))
-        message = f"Car is create - {self.object.name_en}"
-        send_mail('Renting Car Django', message,
-                  EMAIL_HOST_USER, [self.request.user.email])
+        entered_data_form = form.save(commit=False)
+        entered_data_form.owner_car = self.request.user
+
+        if entered_data_form.save():
+            messages.add_message(self.request, messages.SUCCESS, _('Car is create success!'))
+            message = f"Car is create - {entered_data_form.name_en}"
+            send_mail('Renting Car Django', message,
+                      EMAIL_HOST_USER, [self.request.user.email])
+        else:
+            messages.add_message(self.request, messages.SUCCESS, _('Incorrect data entered!'))
         return super().form_valid(form)
 
     def get_success_url(self):

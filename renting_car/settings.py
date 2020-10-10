@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     'apps.auth_user',
     'apps.car',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -25,9 +25,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'apps.auth_user',
     'apps.car',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,10 @@ EMAIL_HOST_USER = 'django.renting.car@gmail.com'
 EMAIL_HOST_PASSWORD = 'rentig_car_admin_2000'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

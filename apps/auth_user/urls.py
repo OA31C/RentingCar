@@ -1,7 +1,7 @@
 from .views import RegistrationUser, LoginUser, LogOutUser, UserProfile, UserEdit, UserDelete
 from django.contrib.auth import views as auth_views
 from renting_car.views import redirect_login
-from django.urls import path, include
+from django.urls import path
 
 urlpatterns = [
     path('', redirect_login),

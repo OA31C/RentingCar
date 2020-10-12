@@ -64,17 +64,6 @@ class RentingCar(models.Model):
         """Check reservation overlap date."""
 
         renting_cars = RentingCar.objects.filter(car__id=entered_form_data.car.id)
-        print()
-        print()
-        print()
-        print()
-        print()
-        print('renting cars')
-        print(renting_cars)
-        print()
-        print()
-        print()
-
         for renting_car in renting_cars:
             if not (entered_form_data.lease_start_date <= renting_car.lease_end_date and
                     renting_car.lease_start_date <= entered_form_data.lease_end_date):
